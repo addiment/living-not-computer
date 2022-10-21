@@ -5,8 +5,9 @@ html {
 
 body {
     margin: 0;
-    padding: 8px;
+    padding: 16px;
     text-align: center;
+    background-color: #000;
 }
 
 h1,
@@ -34,5 +35,14 @@ hr {
     background: none;
     border: none;
     border-radius: 0;
-    border: solid 2px #7f7f00;
+    border: solid 2px #808000;
+}
+
+.case {
+    display: inline-block;
+    width: fit-content;
+    height: fit-content;
+    padding: 16px;
+    text-align: center;
+    background-color: #404040;
 }
