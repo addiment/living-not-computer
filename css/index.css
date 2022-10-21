@@ -44,5 +44,19 @@ hr {
     height: fit-content;
     padding: 16px;
     text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-line;
     background-color: #404040;
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        background-color: #404040;
+    }
+
+    .case {
+        padding: 0;
+        background: none;
+    }
 }
