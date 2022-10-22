@@ -1,71 +1,89 @@
-* {
-    box-sizing: border-box;
-}
-
 html {
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
 }
 
 body {
     margin: 0;
-    padding: 16px;
-    text-align: center;
+    padding: 0;
+    height: 100%;
     background-color: #000;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
-h1,
-h2,
-p {
-    margin: 8px;
-    font-family: monospace;
-    color: #fff;
+#sleep {
+    width: 82px;
+    height: 132px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    display: block;
+    position: fixed;
+    overflow: visible;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
-h1 {
-    font-size: 64px;
-    color: #ffff00;
+#sleep * {
+    display: block;
+    position: absolute;
+    image-rendering: optimizeSpeed;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: pixelated;
+    animation: sine 1s ease-in-out infinite;
+    animation-direction: alternate;
 }
 
-h2 {
-    font-size: 32px;
+#s1 {
+    width: 68px;
+    height: 68px;
+    left: 0px;
+    top: 64px;
+    animation: none;
 }
 
-p {
-    font-size: 16px;
+#s2, #s3, #s4 {
+    width: 14px;
+    height: 20px;
 }
 
-hr {
-    background: none;
-    border: none;
-    border-radius: 0;
-    border: solid 2px #808000;
+#s2 {
+    left: 54px;
+    top: 48px;
 }
 
-.case {
-    display: inline-block;
-    width: fit-content;
-    height: fit-content;
-    padding: 16px;
-    text-align: center;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: pre-line;
-    background-color: #404040;
+#s3 {
+    left: 62px;
+    top: 24px;
+    animation-delay: 0.5s;
 }
 
-@media screen and (max-width: 480px) {
-    body {
-        padding: 0;
-        background-color: #404040;
+#s4 {
+    left: 68px;
+    top: 0px;
+    animation-delay: 1s;
+}
+
+@keyframes sine {
+    0% {
+        transform: translateX(0px);
     }
 
-    .case {
-        margin: 0;
-        padding: 8px;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background: none;
+    100% {
+        transform: translateX(14px);
     }
 }
