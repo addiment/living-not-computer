@@ -57,23 +57,23 @@ body {
 }
 
 #s2, #s3, #s4 {
-    width: 14px;
+    width: 20px;
     height: 20px;
 }
 
 #s2 {
-    left: 54px;
+    left: 51px;
     top: 48px;
 }
 
 #s3 {
-    left: 62px;
+    left: 59px;
     top: 24px;
     animation-delay: 0.5s;
 }
 
 #s4 {
-    left: 68px;
+    left: 65px;
     top: 0px;
     animation-delay: 1s;
 }
