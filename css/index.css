@@ -1,71 +1,310 @@
 * {
     box-sizing: border-box;
+    outline: none !important;
+    border: none !important;
+}
+
+:root {
+    --col-bg: #15181C;
+    --col-bg-flash: var(--col-bg);
+    --col-fg: #ff1040;
+    --col-fg-shadow: #ff104080;
+    --col-bg-shadow: #15181C80;
+    --col-fg-bright: #ffffff20;
 }
 
 html {
-    margin: 0;
-    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--col-bg);
+    overflow: auto;
+    color: transparent;
+    /*
+    this is to get around an absolutely BIZARRE firefox """bug"""
+    where the root <html> tag can be tab-focused
+    and it applies a dotted border to the entire page.
+    I couldn't find any information about it online either,
+    and this is the only way I could get it to go away.
+    */
+    border: solid 0px transparent;
+}
+
+@keyframes scanline {
+    0% {
+        transform: translate(0px, 0px);
+    }
+
+    100% {
+        transform: translate(0px, 4px);
+    }
+}
+
+html::after {
+    display: inline-block;
+    position: fixed;
+    background-size: 4px 4px;
+    background-repeat: repeat;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    content: '';
+    background-image: linear-gradient(0deg, #96838300 0%, #00000000 50%, #00000028 50%, #00000028 100%);
+    z-index: 10;
+    pointer-events: none;
+    touch-action: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    animation: scanline 0.015s linear 0s infinite forwards;
+    outline: none;
+    border: none;
+}
+
+@keyframes jitter {
+    0% {
+        transform: translate(0px, 0px);
+    }
+
+    50% {
+        transform: translate(0px, 1px);
+    }
+
+    100% {
+        transform: translate(0px, 0px);
+    }
 }
 
 body {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: stretch;
+    align-items: stretch;
     margin: 0;
-    padding: 16px;
-    text-align: center;
-    background-color: #000;
-}
-
-h1,
-h2,
-p {
-    margin: 8px;
-    font-family: monospace;
-    color: #fff;
-}
-
-h1 {
-    font-size: 64px;
-    color: #ffff00;
-}
-
-h2 {
-    font-size: 32px;
-}
-
-p {
-    font-size: 16px;
-}
-
-hr {
-    background: none;
-    border: none;
-    border-radius: 0;
-    border: solid 2px #808000;
-}
-
-.case {
-    display: inline-block;
     width: fit-content;
     height: fit-content;
-    padding: 16px;
-    text-align: center;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: pre-line;
-    background-color: #404040;
+    min-width: 100%;
+    min-height: 100%;
+    outline: none;
+    border: none;
+    color: var(--col-fg);
+    background-color: transparent;
+    overflow: hidden;
 }
 
-@media screen and (max-width: 480px) {
-    body {
-        padding: 0;
-        background-color: #404040;
+@keyframes jitter-tune {
+    0% {
+        transform: scale(0.01, 0);
+        border-radius: 100%;
     }
 
-    .case {
-        margin: 0;
-        padding: 8px;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background: none;
+    25% {
+        transform: scale(0.75, 0.05);
     }
+
+    50% {
+        transform: scale(1.5, 0.5);
+    }
+
+    75% {
+        transform: scale(1.0, 1.0);
+    }
+
+    100% {
+        border-radius: 0;
+    }
+}
+
+body>div#notbody {
+    flex: 1 0 auto;
+    display: flex;
+    margin: 0%;
+    min-width: fit-content;
+    min-height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: none;
+    animation: jitter-tune 0.2s cubic-bezier(0.25, -0.25, 0.75, 1.25) 0s 1 none;
+}
+
+/* only show anim if screen's smallest axis is larger than 720px */
+@media screen and ((min-width: 720px) or (min-height: 720px)) {
+    body>div#notbody {
+        animation:
+            /* UNCOMMENT BELOW TO ADD BACK JITTER */
+            /* jitter 0.08s steps(1) 0.25s infinite forwards, */
+            jitter-tune 0.25s cubic-bezier(0.25, -0.25, 0.75, 1.25) 0s 1 none;
+    }
+}
+
+*,
+pre,
+button {
+    font-family: 'ibm_false', monospace;
+    font-size: 36px;
+    line-height: 1em;
+    font-smooth: never !important;
+    -webkit-font-smoothing: never !important;
+    -moz-osx-font-smoothing: never !important;
+    text-rendering: geometricPrecision;
+    /* image-rendering: pixelated; */
+}
+
+body>div#notbody {
+    filter: blur(0.6px);
+}
+
+@media screen and ((max-width: 342px) or (max-height: 468px)) {
+
+    *,
+    pre,
+    button {
+        font-size: 24px;
+    }
+
+    body>div#notbody {
+        filter: blur(0.5px);
+    }
+
+}
+
+@media screen and ((max-width: 228px) or (max-height: 312px)) {
+
+    *,
+    pre,
+    button {
+        font-size: 12px;
+    }
+
+    body>div#notbody {
+        filter: blur(0.25px);
+    }
+
+}
+
+a,
+:visited {
+    color: unset;
+    text-decoration: none;
+}
+
+*::selection {
+    background-color: var(--col-fg);
+    color: var(--col-bg);
+    text-shadow: none;
+}
+
+button {
+    user-select: all;
+    -webkit-user-select: all;
+    -moz-user-select: all;
+    -ms-user-select: all;
+}
+
+*:focus,
+*:focus-visible {
+    outline: none;
+}
+
+.dpre,
+.dpre * {
+    white-space: pre;
+}
+
+.hidden {
+    visibility: collapse;
+    display: none;
+}
+
+.selopt {
+    display: inline-block;
+    padding: 0;
+    width: fit-content;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    /* text-align: justify; */
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--col-fg);
+    text-shadow: 0px 0px 8px var(--col-fg-shadow);
+}
+
+.selopt:hover,
+.selopt:focus-visible {
+    background-color: var(--col-fg) !important;
+    color: var(--col-bg) !important;
+    text-shadow: none !important;
+}
+
+/* this only works in chrome, pseudo-elements can't target selectors */
+/* .selopt:hover::selection/*, */
+/* .selopt:focus-visible::selection {
+    background-color: var(--col-bg);
+    color: var(--col-fg);
+    text-shadow: 0px 0px 8px var(--col-fg-shadow);
+} */
+
+.selopt:not(:hover)::selection,
+.selopt:not(:hover)::-moz-selection {
+    /* background-color: var(--col-fg) !important;
+    color: var(--col-bg) !important;
+    text-shadow: none; */
+    background-color: var(--col-bg);
+    color: var(--col-fg);
+    text-shadow: 0px 0px 8px var(--col-fg-shadow);
+}
+
+button.selopt:hover::before,
+a.selopt:hover::before
+
+/*,
+button.selopt:focus-visible::before, 
+a.selopt:focus-visible::before*/
+    {
+    white-space: pre;
+    display: inline-block;
+    position: absolute;
+    color: var(--col-fg);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    touch-action: none;
+}
+
+button.selopt:hover::before,
+a.selopt:hover::before
+
+/*,
+button.selopt:focus-visible::before,
+a.selopt:focus-visible::before*/
+    {
+    content: "                \00AB\00AB";
+}
+
+a.selopt.left:hover::before
+
+/*,
+a.selopt.left:focus-visible::before*/
+    {
+    content: "                   \00AB\00AB";
+
+}
+
+#mainmenu {
+    color: var(--col-fg);
+    z-index: 2;
+    text-shadow: 0px 0px 8px var(--col-fg-shadow);
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: fit-content;
+    height: fit-content;
+    /* text-align: justify; */
+    text-align: center;
 }

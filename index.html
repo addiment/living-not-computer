@@ -1,48 +1,77 @@
 <!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<html lang="en-US">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta property="og:locale" content="en_US" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="keywords" content="living computer" />
-    <!-- embedding -->
-    <meta name="twitter:card" content="summary" />
-    <title>Pardon the Chassis Intrusion</title>
-    <meta name="twitter:title" content="living computer" />
-    <meta property="og:site_name" content="living computer" />
-    <!-- <meta name="application-name" /> -->
-    <!-- <meta name="generator" content="a computer" /> -->
-    <meta name="description" content="living computer" />
-    <meta property="og:description" content="living computer" />
-    <meta name="twitter:description" content="living computer" />
-    <meta property="og:image" content="https://living.computer/img/icon192.png" />
-    <meta property="twitter:image" content="https://living.computer/img/icon192.png" />
+    <meta name="viewport" content="width=684px">
+    <title>living.computer 1994 // index</title>
+
     <!-- icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/icon144.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/icon114.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/icon72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/img/icon57.png" />
-    <link rel="apple-touch-icon" href="/img/icon192.png">
-    <link rel="shortcut icon" href="/img/icon192.png">
-    <link rel="icon" href="/img/icon.png" />
-    <!-- fancy -->
-    <meta name="color-scheme" content="dark" />
-    <meta name="theme-color" content="#404040" />
-    <!-- data -->
-    <link rel="canonical" href="https://living.computer" />
-    <link rel="preload" as="style" href="/css/index.css">
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/icon144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icon114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/icon72.png">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/icon57.png">
+    <link rel="apple-touch-icon" href="img/icon192.png">
+    <link rel="shortcut icon" href="img/icon192.png">
+    <link rel="icon" href="img/icon32.png">
+    <!-- css -->
+    <link rel="preload" as="style" href="css/index.css">
+    <link rel="preload" as="style" href="css/reusables.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/reusables.css">
+    <!-- font -->
+    <link rel="preload" as="font" href="fonts/ibm/Flexi_IBM_VGA_False.ttf">
+    <link rel="preload" as="style" href="fonts/ibm.css">
+    <link rel="stylesheet" href="fonts/ibm.css">
+    <!-- <noscript>
+        <link rel="stylesheet" href="css/noscript.css">
+    </noscript> -->
 </head>
 
 <body>
-    <div class="case">
-        <h1>Pardon the Chassis Intrusion</h1>
-        <h2>We've been having some technical difficulties.</h2>
-        <hr>
-        <p>Our computers keep dying. We're working on a longer-term solution to keep them alive right now.</p>
+    <div id="notbody">
+        <pre id="mainmenu" class="dpre">   living.computer   
+ ╔═════════════════╗ 
+ ║ VERSION 2 ALPHA ║ 
+ ║   Jan 9, 1994   ║ <!-- it's pretty obvious, but this site is not actually from 1994. -->
+ ║                 ║ <!-- ╟─   <a tabindex="1" href="./about" class="selopt centered">  ABOUT  </a>   ─╢ -->
+ ╠═══ <button class="selopt" id="expand-links">  LINKS  </button> ═══╣ 
+ <span aria-hidden="true" class="hidden" id="ex-links">║                 ║ 
+ ╟─<a target="_blank" rel="noreferrer" href="https://twitch.tv/addiment_lc" class="selopt left"> TWITCH.TV </a>    ─╢ 
+ ╟─<a target="_blank" rel="noreferrer" href="https://github.com/addiment" class="selopt left"> GITHUB </a>       ─╢ 
+ </span>║                 ║ 
+ ╚═════════════════╝ 
+<!-- ╠═══ <button class="selopt"> CONTACT </button> ═══╣
+     ║                 ║ 
+UNDER CONSTRUCTION!                      
+                     
+©living.computer <span id="cyear">1994</span>
+--></pre>
+        <!-- <div tabindex="3" id="tabguard"></div> -->
     </div>
 </body>
+
+<script>
+
+    document.getElementById("expand-links").addEventListener("click", function (ev) {
+        /** @type {HTMLButtonElement} */
+        let links = document.getElementById("ex-links");
+        if (links.classList.contains("hidden")) {
+            links.ariaHidden = false;
+            links.classList.remove("hidden");
+        } else {
+            links.ariaHidden = true;
+            links.classList.add("hidden");
+        }
+    });
+
+    // document.getElementById("cyear").innerText = (new Date()).getFullYear()
+    // const taboverflow = document.querySelector('[tabindex="1"]')
+    // const tabguard = document.getElementById('tabguard');
+    // tabguard.addEventListener('focus', ev => {
+    //     taboverflow.focus();
+    // });
+</script>
 
 </html>

@@ -1,0 +1,9 @@
+User-agent: Twitterbot
+Disallow: /css
+Disallow: /js
+Allow: /img
+
+User-agent: *
+Disallow: /css
+Disallow: /js
+Allow: /img
