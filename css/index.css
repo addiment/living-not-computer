@@ -130,6 +130,12 @@ body>div#notbody {
     animation: jitter-tune 0.2s cubic-bezier(0.25, -0.25, 0.75, 1.25) 0s 1 none;
 }
 
+a,
+button,
+body>* {
+    touch-action: manipulation;
+}
+
 /* only show anim if screen's smallest axis is larger than 720px */
 @media screen and ((min-width: 720px) or (min-height: 720px)) {
     body>div#notbody {
